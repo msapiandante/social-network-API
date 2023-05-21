@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-const Reaction = require('./Reaction')
+const Reaction = require('./reaction')
 const Thought = model('thought', thoughtSchema);
 
 //updates reaction count to thought schema
