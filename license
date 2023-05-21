@@ -1,17 +1,3 @@
-# Social Network API
-
-## Description
-This project was used to reinforce concepts that I learned in the NoSql module of the bootcamp course. I learned how to create and manipulate data using MongoDB Compass. I also learned how to use Mongoose. I found it interesting and also just a great learning experience to find out how much coding and background work goes into social media websites as well as any web api, really. The project was challenging at times because keeping all the models, controllers and routes clear and connected in correct ways could get confusing at times. 
-
-## Credits
-https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide
-https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb
-https://www.npmjs.com/package/express
-https://www.npmjs.com/package/mongoose
-https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide
-
-## License
-
 MIT License
 
 Copyright (c) 2023 msapiandante
@@ -33,5 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-## Tests
