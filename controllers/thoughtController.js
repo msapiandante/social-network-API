@@ -1,29 +1,29 @@
-const { User, Thoughts } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
   // Get all thoughts
-  this.getThoughts(req, res) {
-    Thoughts.find()
-    .populate('user')
-      .then((Thoughts) => res.json(Thoughts))
+  getThoughts(req, res) {
+    Thought.find()
+      .populate('user')
+      .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
   // Get a thought
   getSingleThought(req, res) {
-    Thoughts.findOne({ _id: req.params.userId })
+    Thought.findOne({ _id: req.params.userId })
       .populate('user')
       .select('-__v')
-      .then((Thoughts) =>
-        !Thoughts
+      .then((thought) =>
+        !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : res.json(course)
+          : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },
   // Create a thought
   createThought(req, res) {
-    Thoughts.create(req.body)
-      .then((Thoughts) => res.json(Thoughts))
+    Thought.create(req.body)
+      .then((thought) => res.json(thought))
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
@@ -31,26 +31,26 @@ module.exports = {
   },
   // Delete a thought
   deleteThought(req, res) {
-    Thoughts.findOneAndDelete({ _id: req.params.userId })
-      .then((Thoughts) =>
-        !Thoughts
-          ? res.status(404).json({ message: 'No user with that ID' })
-          : Users.deleteMany({ _id: { $in: Thoughts.Users } })
+    Thought.findOneAndDelete({ _id: req.params.userId })
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with that ID' })
+          : User.deleteMany({ _id: { $in: thought.users } })
       )
       .then(() => res.json({ message: 'Thought deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
   // Update a thought
-  updateCourse(req, res) {
-    Thoughts.findOneAndUpdate(
+  updateThought(req, res) {
+    Thought.findOneAndUpdate(
       { _id: req.params.userId },
       { $set: req.body },
       { runValidators: true, new: true }
     )
-      .then((Thoughts) =>
-        !Thoughts
-          ? res.status(404).json({ message: 'No user with this id!' })
-          : res.json(Thoughts)
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with this ID' })
+          : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },
