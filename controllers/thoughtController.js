@@ -55,3 +55,41 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 };
+
+// Create a new reaction
+function newReaction(req, res) {
+  Thought.findOneAndUpdate(
+    { _id: req.params.thoughtId },
+    { $addToSet: { reactions: req.body } },
+    { runValidators: true, new: true }
+  )
+    .then((newReaction) => {
+      if (!newReaction) {
+        res.status(404).json({ message: 'Oops! Something went wrong.' });
+      } else {
+        res.status(200).json(newReaction);
+      }
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
+}
+
+// Delete a reaction
+function deleteReaction(req, res) {
+  Thought.findOneAndUpdate(
+    { _id: req.params.thoughtId },
+    { $pull: { reactions: { reactionId: req.body.reactionId } } },
+    { runValidators: true, new: true }
+  )
+    .then((deleteReaction) => {
+      if (!deleteReaction) {
+        res.status(404).json({ message: 'Oops! Something went wrong' });
+      } else {
+        res.status(200).json(deleteReaction);
+      }
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
+}

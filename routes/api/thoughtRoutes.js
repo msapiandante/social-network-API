@@ -19,6 +19,7 @@ router
 //route to get single thought 
 router.route("/:thoughtId").get(getSingleThought);
 //route to add and remove reactions
-router.route("/:thoughtId/reactions").post(newReaction).delete(deleteReaction);
-
+router.route('/:thoughtId/reactions')
+  .post(newReaction)
+  .delete(deleteReaction);
 module.exports = router;
