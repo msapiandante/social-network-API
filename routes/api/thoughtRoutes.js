@@ -1,7 +1,7 @@
 const router = require("express").Router();
 //variables for all different actions of thoughts 
 const {
-  getThoughts,
+  getAllThoughts,
   getSingleThought,
   createThought,
   updateThought,
@@ -12,7 +12,7 @@ const {
 
 router
   .route("/")
-  .get(getThoughts)
+  .get(getAllThoughts)
   .post(createThought)
   .put(updateThought)
   .delete(deleteThought);
